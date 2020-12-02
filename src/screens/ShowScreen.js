@@ -7,10 +7,10 @@ const ShowScreen = ({ navigation }) => {
   const { state } = useContext(Context);
 
   const blogPost = state.find(blogPost => blogPost.id === id);
-
   return (
     <View>
       <Text>{blogPost.title}</Text>
+      <Text>{blogPost.content}</Text>
     </View>
   );
 };
