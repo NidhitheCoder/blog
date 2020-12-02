@@ -15,7 +15,7 @@ const addBlogPost = (dispatch) => {
   };
 };
 
-export const { context, provider } = createDataContext(
+export const { Context, Provider } = createDataContext(
   blogReducer,
   { addBlogPost },
   []
