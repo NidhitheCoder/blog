@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -11,7 +11,11 @@ import { Context } from "../context/BlogContext";
 import { Feather } from "@expo/vector-icons";
 
 const IndexScreen = ({ navigation }) => {
-  const { state, deleteBlogPost } = useContext(Context);
+  const { state, deleteBlogPost, getBlogposts } = useContext(Context);
+  useEffect(() => {
+    getBlogposts();
+  }, []);
+
   return (
     <View>
       <FlatList
@@ -38,10 +42,13 @@ const IndexScreen = ({ navigation }) => {
   );
 };
 
-IndexScreen.navigationOptions = ({navigation}) => {
+IndexScreen.navigationOptions = ({ navigation }) => {
   return {
-    headerRight: ()=>(
-      <TouchableOpacity style={styles.headingIcon} onPress={()=>navigation.navigate("Create")}>
+    headerRight: () => (
+      <TouchableOpacity
+        style={styles.headingIcon}
+        onPress={() => navigation.navigate("Create")}
+      >
         <Feather name="plus" size={30} />
       </TouchableOpacity>
     )
@@ -63,8 +70,8 @@ const styles = StyleSheet.create({
   iconStyle: {
     fontSize: 24
   },
-  headingIcon:{
-    marginRight:10
+  headingIcon: {
+    marginRight: 10
   }
 });
 
