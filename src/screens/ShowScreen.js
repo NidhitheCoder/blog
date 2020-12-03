@@ -10,8 +10,10 @@ const ShowScreen = ({ navigation }) => {
   const blogPost = state.find(blogPost => blogPost.id === id);
   return (
     <View>
-      <Text>{blogPost.title}</Text>
-      <Text>{blogPost.content}</Text>
+      <Text style={styles.titleStyle}>Title :</Text>
+      <Text style={styles.textStyle}>{blogPost.title}</Text>
+      <Text style={styles.titleStyle}>Content :</Text>
+      <Text style={styles.textStyle}>{blogPost.content}</Text>
     </View>
   );
 };
@@ -35,6 +37,19 @@ const styles = StyleSheet.create({
   headerIcon: {
     marginRight: 10,
     color: "green"
+  },
+  textStyle:{
+    width:250,
+    alignSelf:"center",
+    marginVertical:10,
+    color:"green",
+    fontSize:18,
+    fontWeight:"bold"
+  },
+  titleStyle:{
+    marginLeft:10,
+    marginTop:10,
+
   }
 });
 
